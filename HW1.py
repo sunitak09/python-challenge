@@ -16,9 +16,7 @@ with open(csvpath) as csvfile:
         month_counter = month_counter + 1
 
 
-print("Financial Analysis")
-print("-------------------")
-print(f"Total Months: {month_counter}")
+
 
     
 #The net total amount of "Profit/Losses" over the entire period
@@ -87,11 +85,15 @@ with open(csvpath) as csvfile:
             counter += 1
 
 
+print("Financial Analysis")
+print("-------------------")
+print(f"Total Months: {month_counter}")
+
 #Total: $22564198
 print(f"Total Changes:  ${total_changes}")
 
 #  Average Change: $-8311.11
-print(f"Average Change: ${total_sum/(counter - 2)}")
+print(f"Average Change: ${round(total_sum/(counter - 2),2)}")
 
 #  Greatest Increase in Profits: Aug-16 ($1862002)
 print(f"Greatest Increase in Profits: {name_max}  (${current_max}")
@@ -101,7 +103,25 @@ print(f"Greatest Increase in Profits: {name_max}  (${current_max}")
 print(f"Greatest Decrease in Profits: {name_min} (${current_min})")
 
 
+#file writing
+with open('PyBank_Result.txt', 'w') as f:
+    f.write("Financial Analysis \n")
+    f.write("------------------- \n")
+    f.write(f"Total Months: {month_counter} \n")
 
+    #Total: $22564198
+    f.write(f"Total Changes:  ${total_changes} \n")
+
+    #  Average Change: $-8311.11
+    f.write(f"Average Change: ${round(total_sum/(counter - 2),2)} \n")
+
+    #  Greatest Increase in Profits: Aug-16 ($1862002)
+    f.write(f"Greatest Increase in Profits: {name_max}  (${current_max} \n")
+
+    # Greatest Decrease in Profits: Feb-14 ($-1825558)#
+
+    f.write(f"Greatest Decrease in Profits: {name_min} (${current_min})")
+    
 
 
 
